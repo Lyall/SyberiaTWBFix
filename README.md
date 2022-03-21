@@ -11,7 +11,7 @@ This MelonLoader mod for the game **Syberia (4): The World Before** adds support
 - Run it and click **SELECT**, then navigate to the **game directory** (e.g steamapps/common/Syberia - The World Before).
 - Find and open the game executable (**SyberiaTWB.exe**) and click **INSTALL**.
 - Grab the [latest release of SyberiaTWBFix](https://github.com/Lyall/SyberiaTWBFix/releases)
-- Extract the contents of the **SiberiaTWBFix** zip to the **game directory**.
+- Extract the contents of the **SyberiaTWBFix** zip to the **game directory**.
 - Run the game. It may take a little while on the first boot as MelonLoader does it's magic.
 
 
