@@ -1,9 +1,10 @@
-# Syberia The World Before Fix
+# Syberia: The World Before Fix
 
 This MelonLoader mod for the game **Syberia (4): The World Before** adds support for:
 - Playing the game in any ultrawide aspect ratio such as 21:9, 32:9 or even higher.
 - Fixing various UI issues caused by running at unsupported resolutions.
 - Setting an arbitrary resolution.
+- Skipping the intro logos.
 
 ## Installation
 - Grab the [latest version of the MelonLoader installer](https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe)
