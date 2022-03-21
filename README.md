@@ -22,5 +22,6 @@ This MelonLoader mod for the game **Syberia (4): The World Before** adds support
 Please report any issues you see and I'll do my best to fix them.
 
 ## Screenshots
-
+![ezgif-4-49bf7fc571](https://user-images.githubusercontent.com/695941/159209092-60333d84-8618-44fe-9448-80f8a71648fc.gif)
+![ezgif-2-47b880b67d](https://user-images.githubusercontent.com/695941/159208854-9f4a8c71-3522-48dc-b5c1-a1edf8e28ac3.gif)
 
