@@ -11,7 +11,6 @@ This MelonLoader mod for the game **Syberia (4): The World Before** adds support
 - Extract the contents of the **SyberiaTWBFix** zip to the **game directory**.
 - Run the game. It may take a little while on the first boot as MelonLoader does it's magic.
 
-
 ## Configuration
 - See the generated config file **SyberiaTWBFix.cfg** in the **Mod** folder to adjust various aspects of the mod.
 

@@ -1,5 +1,5 @@
 ## Installation
-- Extract the contents of the WeNeedToGoDeeperFix  zip in to the game directory (e.g. steamapps/common/WeNeedToGoDeeper).
-- Run the game once to generate a config file located at **WeNeedToGoDeeper/BepinEx/config/WeNeedToGoDeeperFix.cfg**
+- Extract the contents of the **SyberiaTWBFix** zip to the **game directory**.
+- Run the game. It may take a little while on the first boot as MelonLoader does it's magic.
 
-More up to date [installation instructions are available here](https://github.com/Lyall/WeNeedToGoDeeperFix#installation).
+More up to date [installation instructions are available here](https://github.com/Lyall/SyberiaTWBFix#installation).
