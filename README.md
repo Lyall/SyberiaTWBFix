@@ -7,7 +7,7 @@ This MelonLoader mod for the game **Syberia (4): The World Before** adds support
 - Skipping the intro logos.
 
 ## Installation
-- Grab the [latest release of SyberiaTWBFix](https://github.com/Lyall/SyberiaTWBFix/releases)
+- Grab the [latest release of SyberiaTWBFix.](https://github.com/Lyall/SyberiaTWBFix/releases)
 - Extract the contents of the **SyberiaTWBFix** zip to the **game directory**.
 - Run the game. It may take a little while on the first boot as MelonLoader does it's magic.
 
