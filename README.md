@@ -1,5 +1,5 @@
 # Syberia: The World Before Fix
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W01UAI9)<br/>
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W01UAI9)</br>
 [![Github All Releases](https://img.shields.io/github/downloads/Lyall/SyberiaTWBFix/total.svg)]()
 
 This MelonLoader mod for the game **Syberia (4): The World Before** adds support for:
