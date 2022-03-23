@@ -16,7 +16,6 @@ This MelonLoader mod for the game **Syberia (4): The World Before** adds support
 
 ## Known Issues
 Please report any issues you see and I'll do my best to fix them.
-- You may see a bug in the settings menu where it shows the wrong resolution selected. 
 
 ## Screenshots
 ![ezgif-4-49bf7fc571](https://user-images.githubusercontent.com/695941/159209092-60333d84-8618-44fe-9448-80f8a71648fc.gif)
