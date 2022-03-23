@@ -29,20 +29,20 @@ namespace SyberiaTWBMod
             Fixes.SetFilePath("Mods/SyberiaTWBFix.cfg");
             UIFix = Fixes.CreateEntry("UI_Fixes", true, "", "Fixes UI issues at ultrawide/wider");
             SkipIntro = Fixes.CreateEntry("Skip_Intro", true, "", "Skips intro videos and profile selection");
-            DesiredResolutionX = Fixes.CreateEntry("Resolution_Width", Display.main.systemWidth, "", "Custom resolution width");
-            DesiredResolutionY = Fixes.CreateEntry("Resolution_Height", Display.main.systemHeight, "", "Custom resolution height");
+            DesiredResolutionX = Fixes.CreateEntry("Resolution_Width", Display.main.systemWidth, "", "Custom resolution width"); // Set default to something safe
+            DesiredResolutionY = Fixes.CreateEntry("Resolution_Height", Display.main.systemHeight, "", "Custom resolution height"); // Set default to something safe
         }
 
         // Set UI scaling on every scene load 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName) // This only runs on scene loading so shouldn't be too inefficient?
         {
-            float NewAspectRatio = Screen.width / (float)Screen.height;
+            float NewAspectRatio = (float)Screen.width / (float)Screen.height;
             LoggerInstance.Msg($"New aspect ratio = {NewAspectRatio}");
 
             if (UIFix.Value && NewAspectRatio >= 1.8)
             {
-                UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                foreach (CanvasScaler GameObject in CanvasObjects)
+                var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                foreach (var GameObject in CanvasObjects)
                 {
                     GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
                     LoggerInstance.Msg("Scene Load: Changed " + GameObject.name + " screen match mode to " + GameObject.screenMatchMode.ToString());
@@ -50,8 +50,8 @@ namespace SyberiaTWBMod
             }
             else if (UIFix.Value && NewAspectRatio <= 1.8) // Set back to default
             {
-                UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                foreach (CanvasScaler GameObject in CanvasObjects)
+                var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                foreach (var GameObject in CanvasObjects)
                 {
                     GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
                     LoggerInstance.Msg("Scene Load: Changed " + GameObject.name + " screen match mode to match (default)");
@@ -68,14 +68,14 @@ namespace SyberiaTWBMod
             {
                 string selectedRes = __instance.resolution.contentList[__instance.resolution.currentIndex].ToString();
                 string[] splitRes = selectedRes.Split('x');
-                float NewAspectRatio = float.Parse(splitRes[0]) / float.Parse(splitRes[1]);
+                float NewAspectRatio = float.Parse(splitRes[0]) / float.Parse(splitRes[1]); // Calculate AR off selected resolution
                 MelonLogger.Msg($"Selected resolution = {float.Parse(splitRes[0])} x {float.Parse(splitRes[1])}");
                 MelonLogger.Msg($"New aspect ratio = {NewAspectRatio}");
 
                 if (UIFix.Value && NewAspectRatio >= 1.8)
                 {
-                    UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                    foreach (CanvasScaler GameObject in CanvasObjects)
+                    var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                    foreach (var GameObject in CanvasObjects)
                     {
                         GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
                         MelonLogger.Msg("Resolution Options: Changed " + GameObject.name + " screen match mode to " + GameObject.screenMatchMode.ToString());
@@ -83,8 +83,8 @@ namespace SyberiaTWBMod
                 }
                 else if (UIFix.Value && NewAspectRatio <= 1.8) // Set back to default
                 {
-                    UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                    foreach (CanvasScaler GameObject in CanvasObjects)
+                    var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                    foreach (var GameObject in CanvasObjects)
                     {
                         GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
                         MelonLogger.Msg("Resolution Options: Changed " + GameObject.name + " screen match mode to match (default)");
@@ -100,16 +100,16 @@ namespace SyberiaTWBMod
             [HarmonyPostfix]
             public static void PauseResolutionOptionsScalingPostfix(UICanvasPause __instance)
             {
-                string selectedRes = __instance.resolution.contentList[__instance.resolution.currentIndex].ToString();
-                string[] splitRes = selectedRes.Split('x');
+                var selectedRes = __instance.resolution.contentList[__instance.resolution.currentIndex].ToString();
+                var splitRes = selectedRes.Split('x');
                 float NewAspectRatio = float.Parse(splitRes[0]) / float.Parse(splitRes[1]);
-                MelonLogger.Msg($"Selected resolution = {float.Parse(splitRes[0])} x {float.Parse(splitRes[1])}");
+                MelonLogger.Msg($"Selected resolution = {float.Parse(splitRes[0])} x {float.Parse(splitRes[1])}"); // Calculate AR off selected resolution
                 MelonLogger.Msg($"New aspect ratio = {NewAspectRatio}");
 
                 if (UIFix.Value && NewAspectRatio >= 1.8)
                 {
-                    UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                    foreach (CanvasScaler GameObject in CanvasObjects)
+                    var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                    foreach (var GameObject in CanvasObjects)
                     {
                         GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
                         MelonLogger.Msg("Pause Resolution Options: Changed " + GameObject.name + " screen match mode to " + GameObject.screenMatchMode.ToString());
@@ -117,8 +117,8 @@ namespace SyberiaTWBMod
                 }
                 else if (UIFix.Value && NewAspectRatio <= 1.8) // Set back to default
                 {
-                    UnhollowerBaseLib.Il2CppArrayBase<CanvasScaler> CanvasObjects = GameObject.FindObjectsOfType<UnityEngine.UI.CanvasScaler>();
-                    foreach (CanvasScaler GameObject in CanvasObjects)
+                    var CanvasObjects = Object.FindObjectsOfType<CanvasScaler>();
+                    foreach (var GameObject in CanvasObjects)
                     {
                         GameObject.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
                         MelonLogger.Msg("Pause Resolution Options: Changed " + GameObject.name + " screen match mode to match (default)");
@@ -208,10 +208,10 @@ namespace SyberiaTWBMod
             [HarmonyPostfix]
             public static void VideoPatchPostfix()
             {
-                float NewAspectRatio = Screen.width / (float)Screen.height;
+                float NewAspectRatio = (float)Screen.width / (float)Screen.height;
                 if (UIFix.Value && NewAspectRatio >= 1.8)
                 {
-                    VideoPlayer RealCamera = GameObject.Find("RealCamera").GetComponent<VideoPlayer>();
+                    var RealCamera = GameObject.Find("RealCamera").GetComponent<VideoPlayer>();
                     RealCamera.aspectRatio = VideoAspectRatio.FitVertically;
                     MelonLogger.Msg("Changed aspect ratio of previously video to FitVertically.");
                 }
@@ -227,7 +227,7 @@ namespace SyberiaTWBMod
             {
                 if (UIFix.Value)
                 {
-                    GameObject CanvasMainLoadingBG = GameObject.Find("CanvasMainLoading/background");
+                    var CanvasMainLoadingBG = GameObject.Find("CanvasMainLoading/background");
                     CanvasMainLoadingBG.transform.localPosition = new Vector3(0, 0, 0);
                 }
             }
