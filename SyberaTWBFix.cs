@@ -154,6 +154,7 @@ namespace SyberiaTWBMod
                 {
                     string customResolution = $"{(int)DesiredResolutionX.Value} x {(int)DesiredResolutionY.Value}";
                     __instance.resolution.contentList.Add(customResolution);
+                    __instance.SetOptionInitValue(); // Update to include added resolution
                 }
                 ResPatch2HasRun = true;
             }
