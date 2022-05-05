@@ -1,8 +1,9 @@
-using HarmonyLib;
 using MelonLoader;
+using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Collections.Generic;
 
 [assembly: MelonInfo(typeof(SyberiaTWBMod.SyberiaTWBFix), "Syberia: The World Before Fix", "1.0.2", "Lyall")]
 [assembly: MelonGame("Microids", "SyberiaTWB")]
@@ -64,9 +65,9 @@ namespace SyberiaTWBMod
         private class ResolutionOptionsScaling
         {
             [HarmonyPostfix]
-            public static void ResolutionOptionsScalingPostfix(LauncherUIManager __instance)
+            public static void ResolutionOptionsScalingPostfix(LauncherUIManager __instance, ref UIMenuList ___resolution)
             {
-                string selectedRes = __instance.resolution.contentList[__instance.resolution.currentIndex].ToString();
+                string selectedRes = ___resolution.contentList[GameOptionsSO.Instance.CurrentResolutionIndex].ToString();
                 string[] splitRes = selectedRes.Split('x');
                 float NewAspectRatio = float.Parse(splitRes[0]) / float.Parse(splitRes[1]); // Calculate AR off selected resolution
                 MelonLogger.Msg($"Selected resolution = {float.Parse(splitRes[0])} x {float.Parse(splitRes[1])}");
@@ -98,9 +99,9 @@ namespace SyberiaTWBMod
         private class PauseResolutionOptionsScaling
         {
             [HarmonyPostfix]
-            public static void PauseResolutionOptionsScalingPostfix(UICanvasPause __instance)
+            public static void PauseResolutionOptionsScalingPostfix(UICanvasPause __instance, ref UIMenuList ___resolution)
             {
-                var selectedRes = __instance.resolution.contentList[__instance.resolution.currentIndex].ToString();
+                var selectedRes = ___resolution.contentList[GameOptionsSO.Instance.CurrentResolutionIndex].ToString();
                 var splitRes = selectedRes.Split('x');
                 float NewAspectRatio = float.Parse(splitRes[0]) / float.Parse(splitRes[1]);
                 MelonLogger.Msg($"Selected resolution = {float.Parse(splitRes[0])} x {float.Parse(splitRes[1])}"); // Calculate AR off selected resolution
@@ -148,7 +149,7 @@ namespace SyberiaTWBMod
         private class ResolutionPatch1
         {
             [HarmonyPostfix]
-            public static void ResolutionPatch2Postfix(GameOptionsSO __instance)
+            public static void ResolutionPatch2Postfix(ref List<Resolution> ___ptr_resolutionlist)
             {
                 if (!ResPatch1HasRun)
                 {
@@ -158,7 +159,7 @@ namespace SyberiaTWBMod
                         height = DesiredResolutionY.Value,
                         refreshRate = 0 // 0 = use highest available
                     };
-                    __instance.ptr_resolutionlist.Add(customResolution);
+                    ___ptr_resolutionlist.Add(customResolution);
                     MelonLogger.Msg($"Added {customResolution.ToString()} to resolution list.");
                 }
                 ResPatch1HasRun = true;
@@ -170,12 +171,12 @@ namespace SyberiaTWBMod
         private class ResolutionPatch2
         {
             [HarmonyPostfix]
-            public static void ResolutionPatch2Postfix(LauncherUIManager __instance)
+            public static void ResolutionPatch2Postfix(LauncherUIManager __instance, ref UIMenuList ___resolution)
             {
                 if (!ResPatch2HasRun)
                 {
                     string customResolution = $"{DesiredResolutionX.Value} x {DesiredResolutionY.Value}";
-                    __instance.resolution.contentList.Add(customResolution);
+                    ___resolution.contentList.Add(customResolution);
                     __instance.SetOptionInitValue(); // Update to include added resolution
                     MelonLogger.Msg($"Added {customResolution} to launcher UI resolution list.");
                 }
@@ -188,12 +189,12 @@ namespace SyberiaTWBMod
         private class ResolutionPatch3
         {
             [HarmonyPostfix]
-            public static void ResolutionPatch3Postfix(UICanvasPause __instance)
+            public static void ResolutionPatch3Postfix(UICanvasPause __instance, ref UIMenuList ___resolution)
             {
                 if (!ResPatch3HasRun)
                 {
                     string customResolution = $"{DesiredResolutionX.Value} x {DesiredResolutionY.Value}";
-                    __instance.resolution.contentList.Add(customResolution);
+                    ___resolution.contentList.Add(customResolution);
                     __instance.SetOptionInitValue(); // Update to include added resolution
                     MelonLogger.Msg($"Added {customResolution} to pause UI resolution list.");
                 }

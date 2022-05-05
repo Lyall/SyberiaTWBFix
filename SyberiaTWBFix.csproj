@@ -5,17 +5,14 @@
     <UseAltLibs>true</UseAltLibs>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="HarmonyX" Version="2.10.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>libs\Assembly-CSharp.stripped.dll</HintPath>
     </Reference>
-    <Reference Include="Il2Cppmscorlib">
-      <HintPath>libs\Il2Cppmscorlib.stripped.dll</HintPath>
-    </Reference>
     <Reference Include="MelonLoader">
       <HintPath>libs\MelonLoader.stripped.dll</HintPath>
-    </Reference>
-    <Reference Include="UnhollowerBaseLib">
-      <HintPath>libs\UnhollowerBaseLib.stripped.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>libs\UnityEngine.CoreModule.stripped.dll</HintPath>
