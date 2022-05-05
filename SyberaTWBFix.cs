@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using System.Collections.Generic;
 
-[assembly: MelonInfo(typeof(SyberiaTWBMod.SyberiaTWBFix), "Syberia: The World Before Fix", "1.0.2", "Lyall")]
+[assembly: MelonInfo(typeof(SyberiaTWBMod.SyberiaTWBFix), "Syberia: The World Before Fix", "1.0.3", "Lyall")]
 [assembly: MelonGame("Microids", "SyberiaTWB")]
 namespace SyberiaTWBMod
 {
